@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLER_H
-# define FILLER_H
-# include "libft/includes/libft.h"
+#ifndef FILLER_F_H
+# define FILLER_F_H
+# include "./libft/includes/libft.h"
+# include "./libft/includes/get_next_line.h"
 
 typedef struct	s_str
 {
@@ -22,6 +23,27 @@ typedef struct	s_str
 	int			col;
 	int			x;
 	int			y;
+	int			cor_x;
+	int			cor_y;
+	int			x_fig;
+	int			y_fig;
+	char		**fig;
+	char		**map;
 }				t_str;
 
 int				fd;
+
+
+
+
+void			initialize_struct(t_str *gen);
+void			find_players(t_str *str);
+void			find_map_size(t_str *gen);
+void			parse_map(t_str *gen);
+void			parse_fig(t_str *gen);
+void			find_fig(t_str *gen);
+
+
+void	ft_del_strsplit(char **str);
+
+#endif
