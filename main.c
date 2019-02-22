@@ -58,10 +58,10 @@ void		find_map_size(t_str *gen)
 
 	line = NULL;
 	get_next_line(fd, &line);
-	str = ft_strsplit(line, ' ');
-	gen->row = ft_atoi(str[1]);
-	gen->col = ft_atoi(str[2]);
-	ft_del_strsplit(str);
+		str = ft_strsplit(line, ' ');
+		gen->row = ft_atoi(str[1]);
+		gen->col = ft_atoi(str[2]);
+		clear_split(str);
 	ft_strdel(&line);
 }
 
@@ -80,6 +80,7 @@ int			main(void)
 	{
 		parse_map(gen);
 		find_fig(gen);
+		//rape_map(gen);
 	}
 
 }

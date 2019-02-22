@@ -44,11 +44,11 @@ void		find_fig(t_str *gen)
 	str = ft_strsplit(line, ' ');
 	gen->y_fig = ft_atoi(str[1]);
 	gen->x_fig = ft_atoi(str[2]);
-	ft_del_strsplit(str);
+	clear_split(str);
 	parse_fig(gen);
 }
 
-void	ft_del_strsplit(char **str) //!!!!!!!!!!!!
+void	clear_split(char **str)
 {
 	size_t i;
 

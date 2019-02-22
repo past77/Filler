@@ -14,6 +14,8 @@
 # define FILLER_F_H
 # include "./libft/includes/libft.h"
 # include "./libft/includes/get_next_line.h"
+# include "./libft/ft_printf/ft_printf.h"
+
 
 typedef struct	s_str
 {
@@ -44,6 +46,6 @@ void			parse_fig(t_str *gen);
 void			find_fig(t_str *gen);
 
 
-void	ft_del_strsplit(char **str);
+void	clear_split(char **str);
 
 #endif
