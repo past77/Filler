@@ -1,1 +1,2 @@
-main.o parse.o rape_map.o ppolozhe.filler
+*.o
+*.filler
