@@ -10,4 +10,63 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "filler.h"
 
+void		get_quarter(t_str *gen)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (gem->map[i])
+	{
+		j = 0;
+		while (gen->map[i][j])
+		{
+			if (ft_toupper(gen->map[i][j]) == gen->me)
+			{
+				if (i =< gen->row / 2 && j =< gen->col / 2)
+					gen->quarter = 1;
+				else if (i =< gen->row /2 && j >= gen->col / 2)
+					gen->quarter = 2;
+				else if (i >= gen->row / 2 && j =< gen->col / 2)
+					gen->quarter = 3;
+				else
+					gen0>quarter = 4;
+				break;
+			}
+			j++:
+		}
+		i++;
+	}
+	start_cord(gen);
+}
+
+void	start_cord(t_str *gen)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (gen->map[i][j])
+	{
+		j = 0
+		while (gen->map[i][j])
+		{
+			if (ft_toupper(gen->map[i][j]) == gen->me)
+			{
+				start_x = i;
+				start_y = j;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+void		rape_map(t_str *gen)
+{
+	if (gen->quarter == 0)
+		get_quarter(gen);
+
+}
