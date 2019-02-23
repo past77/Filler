@@ -24,6 +24,9 @@ void		initialize_struct(t_str *gen)
 	gen->y_fig = 0;
 	gen->fig = NULL;
 	gen->map = NULL;
+	gen->quarter = 0;
+	gen->start_x = 0;
+	gen->start_y = 0;
 	fd = 0;
 }
 
@@ -80,7 +83,7 @@ int			main(void)
 	{
 		parse_map(gen);
 		find_fig(gen);
-		//rape_map(gen);
+		rape_map(gen);
 	}
 
 }

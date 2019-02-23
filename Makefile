@@ -16,7 +16,7 @@ CFLAGS  = -Wall -Wextra -Werror
 CC = @gcc
 FILLER_H = -I filler.h
 
-SRC = main.c parse.c
+SRC = main.c parse.c rape_map.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -18,24 +18,25 @@ void		get_quarter(t_str *gen)
 	int j;
 
 	i = 0;
-	while (gem->map[i])
+	while (gen->map[i])
 	{
 		j = 0;
 		while (gen->map[i][j])
 		{
 			if (ft_toupper(gen->map[i][j]) == gen->me)
 			{
-				if (i =< gen->row / 2 && j =< gen->col / 2)
+				if (i <= gen->row / 2 && j <= gen->col / 2)
 					gen->quarter = 1;
-				else if (i =< gen->row /2 && j >= gen->col / 2)
+				else if (i <= gen->row /2 && j >= gen->col / 2)
 					gen->quarter = 2;
-				else if (i >= gen->row / 2 && j =< gen->col / 2)
+				else if (i >= gen->row / 2 && j <= gen->col / 2)
 					gen->quarter = 3;
 				else
-					gen0>quarter = 4;
+					gen->quarter = 4;
+				ft_printf("quarter: %d", gen->quarter);
 				break;
 			}
-			j++:
+			j++;
 		}
 		i++;
 	}
@@ -48,15 +49,15 @@ void	start_cord(t_str *gen)
 	int j;
 
 	i = 0;
-	while (gen->map[i][j])
+	while (gen->map[i])
 	{
-		j = 0
+		j = 0;
 		while (gen->map[i][j])
 		{
 			if (ft_toupper(gen->map[i][j]) == gen->me)
 			{
-				start_x = i;
-				start_y = j;
+				gen->start_x = i;
+				gen->start_y = j;
 			}
 			j++;
 		}

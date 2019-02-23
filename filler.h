@@ -31,6 +31,10 @@ typedef struct	s_str
 	int			y_fig;
 	char		**fig;
 	char		**map;
+	int			quarter;
+	int			start_x;
+	int			start_y;
+
 }				t_str;
 
 int				fd;
@@ -44,6 +48,9 @@ void			find_map_size(t_str *gen);
 void			parse_map(t_str *gen);
 void			parse_fig(t_str *gen);
 void			find_fig(t_str *gen);
+void			get_quarter(t_str *gen);
+void			start_cord(t_str *gen);
+void			rape_map(t_str *gen);
 
 
 void	clear_split(char **str);

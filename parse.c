@@ -44,6 +44,8 @@ void		find_fig(t_str *gen)
 	str = ft_strsplit(line, ' ');
 	gen->y_fig = ft_atoi(str[1]);
 	gen->x_fig = ft_atoi(str[2]);
+	ft_printf("\ny: %d, x: %d\n", gen->y_fig, gen->x_fig);
+	ft_printf("col: %d, row: %d\n", gen->col, gen->row);
 	clear_split(str);
 	parse_fig(gen);
 }
@@ -69,11 +71,11 @@ void		parse_fig(t_str *gen)
 	j = 0;
 	line = NULL;
 	gen->fig = (char **)malloc(sizeof(char *) * (gen->y_fig + 1));
-	while (gen->row > i)
+	while (gen->y_fig > i)
 	{
 		get_next_line(fd, &line);
 		str = line;
-		gen->fig[j++] = ft_strsub(line, 4, ft_strlen(line));
+		gen->fig[j++] = ft_strdup(line);
 		free(str);
 		i++;
 	}
