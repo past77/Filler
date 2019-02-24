@@ -40,7 +40,6 @@ void		get_quarter(t_str *gen)
 		}
 		i++;
 	}
-	start_cord(gen);
 }
 
 void	start_cord(t_str *gen)
@@ -56,8 +55,13 @@ void	start_cord(t_str *gen)
 		{
 			if (ft_toupper(gen->map[i][j]) == gen->me)
 			{
-				gen->start_x = i;
-				gen->start_y = j;
+				gen->start_mex = i;
+				gen->start_mey = j;
+			}
+			if (ft_toupper(gen->map[i][j]) == gen->opponent)
+			{
+				gen->start_enx = i;
+				gen->start_eny = j;
 			}
 			j++;
 		}
@@ -65,9 +69,24 @@ void	start_cord(t_str *gen)
 	}
 }
 
+void		result(t_str *gen)
+{
+	ft_printf("%d", 1);
+	ft_printf("%d", gen->x_fig);
+}
+
 void		rape_map(t_str *gen)
 {
 	if (gen->quarter == 0)
 		get_quarter(gen);
+	if (solve(gen) == 1)
+	{
+		result(gen);
+		exit (1);
+		//if (check_algo(gen) == 1)
+		//{
+
+		//}
+	}
 
 }

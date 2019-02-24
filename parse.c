@@ -30,8 +30,10 @@ void		parse_map(t_str *gen)
 		gen->map[j++] = ft_strsub(line, 4, ft_strlen(line));
 		free(str);
 		i++;
+		//ft_strdel(&line);
 	}
 	gen->map[j] = NULL;
+	start_cord(gen);
 }
 
 void		find_fig(t_str *gen)
@@ -50,16 +52,35 @@ void		find_fig(t_str *gen)
 	parse_fig(gen);
 }
 
-void	clear_split(char **str)
+void		get_cord_fig(t_str *gen)
 {
-	size_t i;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
+	gen->start_x_fig = gen->x_fig;
+	gen->start_y_fig = gen->y_fig;
+	while (i < gen->y_fig)
+	{
+		j = -1;
+		while (++j < gen->x_fig)
+				if (gen->fig[i][j] == '*')
+			{
+				if (j < gen->start_x_fig)
+					gen->start_x_fig = j;
+				if (j > gen->end_x_fig)
+					gen->end_x_fig = j;
+				if (i < gen->start_y_fig)
+					gen->start_y_fig = i;
+				if (i > gen->end_y_fig)
+					gen->end_y_fig = i;
+			}
+		i++;
+	}
+	gen->tfig_x = (gen->end_x_fig - gen->start_x_fig) + 1;
+	gen->tfig_y = (gen->end_y_fig - gen->start_y_fig) + 1;
+	printf("real_x: %d real_y: %d\n", gen->tfig_x, gen->tfig_y);
 }
-
 void		parse_fig(t_str *gen)
 {
 	int		i;
@@ -79,5 +100,6 @@ void		parse_fig(t_str *gen)
 		free(str);
 		i++;
 	}
+	get_cord_fig(gen);
 	gen->fig[j] = NULL;
 }

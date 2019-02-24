@@ -22,11 +22,21 @@ void		initialize_struct(t_str *gen)
 	gen->y = 0;
 	gen->x_fig = 0;
 	gen->y_fig = 0;
+
+	gen->start_x_fig = 0;
+	gen->start_y_fig = 0;
+	gen->end_x_fig = 0;
+	gen->end_y_fig = 0;
+
+	gen->tfig_x = 0;
+	gen->tfig_y = 0;
 	gen->fig = NULL;
 	gen->map = NULL;
 	gen->quarter = 0;
-	gen->start_x = 0;
-	gen->start_y = 0;
+	gen->start_mex = 0;
+	gen->start_mey = 0;
+	gen->start_enx = 0;
+	gen->start_eny = 0;
 	fd = 0;
 }
 
@@ -68,6 +78,15 @@ void		find_map_size(t_str *gen)
 	ft_strdel(&line);
 }
 
+void	clear_split(char **str)
+{
+	size_t i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
 
 int			main(void)
 {
