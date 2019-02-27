@@ -46,8 +46,6 @@ void		find_fig(t_str *gen)
 	str = ft_strsplit(line, ' ');
 	gen->y_fig = ft_atoi(str[1]);
 	gen->x_fig = ft_atoi(str[2]);
-	ft_printf("\ny: %d, x: %d\n", gen->y_fig, gen->x_fig);
-	ft_printf("col: %d, row: %d\n", gen->col, gen->row);
 	clear_split(str);
 	parse_fig(gen);
 }
@@ -79,8 +77,8 @@ void		get_cord_fig(t_str *gen)
 	}
 	gen->tfig_x = (gen->end_x_fig - gen->start_x_fig) + 1;
 	gen->tfig_y = (gen->end_y_fig - gen->start_y_fig) + 1;
-	printf("real_x: %d real_y: %d\n", gen->tfig_x, gen->tfig_y);
 }
+
 void		parse_fig(t_str *gen)
 {
 	int		i;

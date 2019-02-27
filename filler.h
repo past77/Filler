@@ -42,6 +42,8 @@ typedef struct	s_str
 	int			start_eny;
 	int			tfig_x;
 	int			tfig_y;
+	int			got_x;
+	int			got_y;
 
 }				t_str;
 
@@ -59,37 +61,12 @@ void			find_fig(t_str *gen);
 void			get_quarter(t_str *gen);
 void			start_cord(t_str *gen);
 void			rape_map(t_str *gen);
-
+int				solve_quater1(t_str *gen);
 int				solve(t_str *gen);
+int				put_figure(int row, int col, t_str *gen);
+void			result(t_str *gen);
 
 
 void	clear_split(char **str);
 
 #endif
-/*
-int		i;
-	int		j;
-
-	i = 0;
-	gen->start_x_fig = gen->x_fig;
-	gen->start_y_fig = gen->y_fig;
-	while (i++ < gen->y_fig)
-	{
-		j = 0;
-		while (j++ < gen->x_fig)
-			if (gen->fig[i][j] == '*')
-			{
-				if (j < gen->start_x_fig)
-					gen->start_x_fig = j;
-				if (j > gen->end_x_fig)
-					gen->end_x_fig = j;
-				if (i < gen->start_y_fig)
-					gen->start_y_fig = i;
-				if (i > gen->end_y_fig)
-					gen->end_y_fig = i;
-			}
-	}
-	gen->tfig_x = (gen->end_x_fig - gen->start_x_fig) + 1;
-	gen->tfig_y = (gen->end_y_fig - gen->start_y_fig) + 1;
-	printf("real_x: %d real_y: %d\n", gen->tfig_x, gen->tfig_y);
-	*/

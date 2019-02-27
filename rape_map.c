@@ -33,7 +33,6 @@ void		get_quarter(t_str *gen)
 					gen->quarter = 3;
 				else
 					gen->quarter = 4;
-				ft_printf("quarter: %d", gen->quarter);
 				break;
 			}
 			j++;
@@ -67,12 +66,6 @@ void	start_cord(t_str *gen)
 		}
 		i++;
 	}
-}
-
-void		result(t_str *gen)
-{
-	ft_printf("%d", 1);
-	ft_printf("%d", gen->x_fig);
 }
 
 void		rape_map(t_str *gen)
