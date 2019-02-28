@@ -1,7 +1,5 @@
-seed = 5348
+seed = 7421
 O: error on input
-./ppolozhe.filler: Segfault at 1
-X: error on input
 resources/players/grati.filler won
 Score:
-1AGAINST49
+0AGAINST0

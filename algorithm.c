@@ -13,77 +13,135 @@
 
 #include "filler.h"
 
-int			solve_quater1(t_str *gen)
+int			solve_1(t_str *gen)
 {
-	int		row;
-	int		col;
+	printf("%s\n","into solve_1" );
+	int		fig_row;
+	int		fig_col;
+	int		count;
 	int		k;
 
-	gen->got_x = 0;
-	gen->got_y = 0;
-	row = gen->row;
 	k = 0;
-	while (row > 0)
+	fig_row = -gen->y_fig;
+	count = -1;
+	while (gen->row > fig_row)
 	{
-		col = gen->col;
-		while (col > 0)
+		fig_col = -gen->x_fig;
+		while (gen->col > fig_col)
 		{
-			k = put_figure(row, col, gen);
-			if (k == 1)
+			if (put_figure(fig_row, fig_col, gen));
 			{
-				result(gen);
-				return (0);
+				if(work_with_len(gen, fig_row, fig_col) > count)
+				{
+					count = work_with_len(gen, fig_row, fig_col);
+					gen->got_y = fig_row;
+					gen->got_x = fig_col;
+				}
 			}
-			col--;
+			fig_col++;
 		}
-		row--;
+		fig_row++;
 	}
-	return (1);
+	printf("COUNT: %d\n", count );
+	return (count);
+}
+
+int			work_with_len(t_str *gen, int fig_row, int fig_col)
+{
+	printf("%s\n","string" );
+	int i;
+	int j;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (gen->fig[i])
+	{
+		j = 0;
+		while (gen->fig[i][j])
+		{
+			if (gen->fig[i][j] == '*')
+			{
+				if (i + fig_row == gen->start_mey &&
+					gen->fig[i + fig_row][j + fig_col] != gen->me)
+					count++;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (count);
 }
 
 void		result(t_str *gen)
 {
-	ft_printf("%d %d\n",gen->got_y, gen->got_x);
-	gen->start_mex = gen->got_x;
-	gen->start_mey = gen->got_y;
+	ft_printf("%d %d\n", gen->got_y, gen->got_x);
 }
 
 int			put_figure(int row, int col, t_str *gen)
 {
+	printf("%s\n","string in figure");
+	int		i;
+	int		j;
+	int		count;
+
+	i = 0;
+	count = 0;
+	while (gen->fig[i])
+	{
+		j = 0;
+		while (gen->fig[i][j])
+		{
+			if (gen->fig[i][j] =='*')
+			{
+				printf("%s\n", "iter");
+				if (row + gen->y_fig > gen->row || col + gen->x_fig > gen->col)
+					return (0);
+				if ((gen->map[row + i][col +j] == gen->opponent ||
+				 gen->map[row + i][col +j] == gen->opponent + 32))
+					return (0);
+				if ((gen->map[row + i][col + j] == gen->me ||
+				gen->map[row + i][col + j] == gen->me + 32))
+					count++;
+			}
+			j++;
+		}
+		i++;
+	}
+	printf("count: %d\n", count );
+	if (count == 1)
+		return (1);
+	return (0);
+	/*	printf("%s\n","string in figure");
 	int		i;
 	int		j;
 	int		count;
 
 	i = -1;
 	count = 0;
-	if (row + gen->y_fig > gen->row || col + gen->x_fig > gen->col)
-		return (0);
-	while (++i <= (gen->y_fig - 1))
+	while (gen->fig[i])
 	{
-		j = -1;
-		while (++j <= (gen->x_fig - 1))
+		j = 0;
+		while (gen->fig[i][j])
 		{
-			if (gen->fig[i][j] == '*' && (gen->map[row + i][col +j] == gen->opponent))
-				return (0);
-			if (gen->fig[i][j] == '*' && (gen->map[row + i][col + j] == gen->me))
-				count++;
+			if (gen->fig[i][j] == '*')
+			{
+				if (row + i > gen->row || row + i < 0 ||
+					col + j< 0 || col + j > gen->col)
+					return (0);
+				if (gen->fig[i][j] == '*' && (gen->map[row + i][col +j] == gen->opponent))
+					return (0);
+				if (gen->fig[i][j] == '*' && (gen->map[row + i][col + j] == gen->me))
+					count++;
+				printf("%s\n", "iter");
+			}
+			j++;
 		}
+		i++;
 	}
+	printf("count: %d\n", count );
 	if (count == 1)
-	{
-		gen->got_x = col;
-		gen->got_y = row;
 		return (1);
-	}
-	return (0);
+	return (0); */
 }
 
-int			solve(t_str *gen)
-{
-	if (gen->quarter == 1)
-	{
-		if (solve_quater1(gen) == 1)
-			return (1);
-	}
-	return (0);
-}

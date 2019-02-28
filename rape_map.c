@@ -70,12 +70,15 @@ void	start_cord(t_str *gen)
 
 void		rape_map(t_str *gen)
 {
+	printf("%s\n","string in rape" );
 	if (gen->quarter == 0)
 		get_quarter(gen);
-	if (solve(gen) == 1)
+	printf("quater: %d\n", gen->quarter);
+	if (solve_1(gen) > 0)
 	{
+		printf("%s\n", "in solve_1" );
 		result(gen);
-		exit (1);
+		return ;
 		//if (check_algo(gen) == 1)
 		//{
 

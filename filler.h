@@ -66,6 +66,9 @@ int				solve(t_str *gen);
 int				put_figure(int row, int col, t_str *gen);
 void			result(t_str *gen);
 
+int			solve_1(t_str *gen);
+
+int				work_with_len(t_str *gen, int fig_row, int fig_col);
 
 void	clear_split(char **str);
 

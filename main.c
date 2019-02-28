@@ -23,6 +23,9 @@ void		initialize_struct(t_str *gen)
 	gen->x_fig = 0;
 	gen->y_fig = 0;
 
+	gen->got_x = 0;
+	gen->got_y = 0;
+
 	gen->start_x_fig = 0;
 	gen->start_y_fig = 0;
 	gen->end_x_fig = 0;
