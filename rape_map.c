@@ -54,13 +54,13 @@ void	start_cord(t_str *gen)
 		{
 			if (ft_toupper(gen->map[i][j]) == gen->me)
 			{
-				gen->start_mex = i;
-				gen->start_mey = j;
+				gen->start_mex = j;
+				gen->start_mey = i;
 			}
 			if (ft_toupper(gen->map[i][j]) == gen->opponent)
 			{
-				gen->start_enx = i;
-				gen->start_eny = j;
+				gen->start_enx = j;
+				gen->start_eny = i;
 			}
 			j++;
 		}
@@ -70,19 +70,28 @@ void	start_cord(t_str *gen)
 
 void		rape_map(t_str *gen)
 {
-	printf("%s\n","string in rape" );
+	//int		prev;
+	//int		curr;
+
+
 	if (gen->quarter == 0)
 		get_quarter(gen);
-	printf("quater: %d\n", gen->quarter);
-	if (solve_1(gen) > 0)
+
+	if (solve_2(gen))
 	{
-		printf("%s\n", "in solve_1" );
-		result(gen);
+		printf("eny: %d  enx: %d\n", gen->start_eny ,gen->start_enx);
+		//prev = ft_abs((gen->got_y - gen->start_eny) + (gen->got_x - gen->start_enx));
+		////curr = ft_abs((gen->start_eny - gen->y) + (gen->start_enx - gen->x));
+		//if (curr < prev)
+			result(gen);
 		return ;
-		//if (check_algo(gen) == 1)
-		//{
-
-		//}
 	}
-
+	if (solve_1(gen))
+	{
+		//prev = ft_abs((gen->got_y - gen->start_eny) + (gen->got_x - gen->start_enx));
+		//curr = ft_abs((gen->start_eny - gen->y) + (gen->start_enx - gen->x));
+		//if (curr < prev)
+			result(gen);
+		return ;
+	}
 }

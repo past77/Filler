@@ -103,9 +103,14 @@ int			main(void)
 	find_map_size(gen);
 	while (get_next_line(fd, &line) > 0)
 	{
-		parse_map(gen);
-		find_fig(gen);
-		rape_map(gen);
+		if (ft_strncmp(line, "Plateau", 7))
+		{
+			parse_map(gen);
+			find_fig(gen);
+			rape_map(gen);
+		}
+		else
+			ft_strdel(&line);
 	}
 
 }

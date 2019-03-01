@@ -12,6 +12,35 @@
 
 #include "filler.h"
 
+void		ft_tabdel(char ***tab, int count)
+{
+	int		i;
+
+	i = 0;
+	if (count < 0)
+		while ((*tab)[i])
+		{
+			free((*tab)[i]);
+			i++;
+		}
+	else
+		while (i < count)
+		{
+			free((*tab)[i]);
+			i++;
+		}
+	free(*tab);
+	*tab = NULL;
+}
+
+int		ft_abs(int nb)
+{
+	if (nb < 0)
+		return (-nb);
+	else
+		return (nb);
+}
+
 void		parse_map(t_str *gen)
 {
 	int		i;
@@ -22,6 +51,8 @@ void		parse_map(t_str *gen)
 	i = 0;
 	line = NULL;
 	j = 0;
+	if (gen->map)
+		ft_tabdel(&gen->map, -1);
 	gen->map = (char **)malloc(sizeof(char *) * (gen->row + 1));
 	while (gen->row > i)
 	{
@@ -89,6 +120,8 @@ void		parse_fig(t_str *gen)
 	i = 0;
 	j = 0;
 	line = NULL;
+	if (gen->fig)
+		ft_tabdel(&gen->fig, -1);
 	gen->fig = (char **)malloc(sizeof(char *) * (gen->y_fig + 1));
 	while (gen->y_fig > i)
 	{
