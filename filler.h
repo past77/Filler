@@ -67,12 +67,20 @@ int				put_figure(int row, int col, t_str *gen);
 void			result(t_str *gen);
 void		ft_tabdel(char ***tab, int count);
 int		ft_abs(int nb);
-
+int			solve_3(t_str *gen);
+int			work_vertical(t_str *gen, int fig_row, int fig_col);
+int			put_fig(int row, int col, t_str *gen);
 int			solve_1(t_str *gen);
 int			solve_2(t_str *gen);
 
 int				work_with_len(t_str *gen, int fig_row, int fig_col);
 
 void	clear_split(char **str);
+
+
+
+
+int		ft_chk_len_ver_shld(t_str *gen, int x, int y);
+int		ft_do_vertical_shield(t_str *gen);
 
 #endif

@@ -1,6 +1,5 @@
-seed = 9412
-O: error on input
-./ppolozhe.filler: Segfault at 1
+seed = 816
+O: timedout
 ./ppolozhe.filler won
 Score:
-1AGAINST0
+210AGAINST132

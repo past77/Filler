@@ -70,28 +70,36 @@ void	start_cord(t_str *gen)
 
 void		rape_map(t_str *gen)
 {
-	//int		prev;
-	//int		curr;
+	int i;
 
-
+	i = 0;
 	if (gen->quarter == 0)
 		get_quarter(gen);
 
+	if (gen->row < 50 && gen->row > 20)
+		{
+			if (solve_3(gen))
+			{
+				result(gen);
+				return ;
+			}
+		}
+	if (gen->row > 50 || gen->row < 20)
+	{
+		if (solve_1(gen))
+		{
+			result(gen);
+			return ;
+		}
+	}
 	if (solve_2(gen))
 	{
-		printf("eny: %d  enx: %d\n", gen->start_eny ,gen->start_enx);
-		//prev = ft_abs((gen->got_y - gen->start_eny) + (gen->got_x - gen->start_enx));
-		////curr = ft_abs((gen->start_eny - gen->y) + (gen->start_enx - gen->x));
-		//if (curr < prev)
-			result(gen);
+		result(gen);
 		return ;
 	}
-	if (solve_1(gen))
-	{
-		//prev = ft_abs((gen->got_y - gen->start_eny) + (gen->got_x - gen->start_enx));
-		//curr = ft_abs((gen->start_eny - gen->y) + (gen->start_enx - gen->x));
-		//if (curr < prev)
-			result(gen);
-		return ;
-	}
+
+
+
+
+
 }
