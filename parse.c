@@ -106,8 +106,8 @@ void		get_cord_fig(t_str *gen)
 			}
 		i++;
 	}
-	gen->tfig_x = (gen->end_x_fig - gen->start_x_fig) + 1;
-	gen->tfig_y = (gen->end_y_fig - gen->start_y_fig) + 1;
+	gen->tx_fig = (gen->end_x_fig - gen->start_x_fig) + 1;
+	gen->ty_fig = (gen->end_y_fig - gen->start_y_fig) + 1;
 }
 
 void		parse_fig(t_str *gen)

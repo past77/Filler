@@ -31,8 +31,8 @@ void		initialize_struct(t_str *gen)
 	gen->end_x_fig = 0;
 	gen->end_y_fig = 0;
 
-	gen->tfig_x = 0;
-	gen->tfig_y = 0;
+	gen->tx_fig = 0;
+	gen->ty_fig = 0;
 	gen->fig = NULL;
 	gen->map = NULL;
 	gen->quarter = 0;

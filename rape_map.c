@@ -101,5 +101,4 @@ void		rape_map(t_str *gen)
 
 
 
-
 }

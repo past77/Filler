@@ -40,8 +40,8 @@ typedef struct	s_str
 	int			start_mey;
 	int			start_enx;
 	int			start_eny;
-	int			tfig_x;
-	int			tfig_y;
+	int			tx_fig;
+	int			ty_fig;
 	int			got_x;
 	int			got_y;
 
@@ -72,6 +72,7 @@ int			work_vertical(t_str *gen, int fig_row, int fig_col);
 int			put_fig(int row, int col, t_str *gen);
 int			solve_1(t_str *gen);
 int			solve_2(t_str *gen);
+int			work_horizon(t_str *gen, int fig_row, int fig_col);
 
 int				work_with_len(t_str *gen, int fig_row, int fig_col);
 
