@@ -1,4 +1,7 @@
-seed = 7469
-./ppolozhe.filler won
+seed = 7901
+O: error on input
+./ppolozhe.filler: Segfault at 0
+X: error on input
+resources/players/grati.filler won
 Score:
-1007AGAINST1004
+0AGAINST57

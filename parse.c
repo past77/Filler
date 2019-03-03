@@ -56,7 +56,7 @@ void		parse_map(t_str *gen)
 	gen->map = (char **)malloc(sizeof(char *) * (gen->row + 1));
 	while (gen->row > i)
 	{
-		get_next_line(fd, &line);
+		get_next_line(gen->fd, &line);
 		str = line;
 		gen->map[j++] = ft_strsub(line, 4, ft_strlen(line));
 		free(str);
@@ -73,7 +73,7 @@ void		find_fig(t_str *gen)
 	char	**str;
 
 	line = NULL;
-	get_next_line(fd, &line);
+	get_next_line(gen->fd, &line);
 	str = ft_strsplit(line, ' ');
 	gen->y_fig = ft_atoi(str[1]);
 	gen->x_fig = ft_atoi(str[2]);
@@ -125,7 +125,7 @@ void		parse_fig(t_str *gen)
 	gen->fig = (char **)malloc(sizeof(char *) * (gen->y_fig + 1));
 	while (gen->y_fig > i)
 	{
-		get_next_line(fd, &line);
+		get_next_line(gen->fd, &line);
 		str = line;
 		gen->fig[j++] = ft_strdup(line);
 		free(str);
@@ -134,3 +134,14 @@ void		parse_fig(t_str *gen)
 	get_cord_fig(gen);
 	gen->fig[j] = NULL;
 }
+
+void			data_for_vis(t_str *gen, t_vis *vis)
+{
+	vis->mlx_ptr = mlx_init();
+	vis->height = gen->row * 25 + 0;
+	vis->width = gen->col * 25 + 0;
+	vis->win_ptr = mlx_new_window(vis->mlx_ptr, vis->width,
+		vis->height, "Visual by Pablo Eskobar, sasit'");
+	main_part(gen, vis);
+}
+

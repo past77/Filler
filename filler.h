@@ -15,7 +15,7 @@
 # include "./libft/includes/libft.h"
 # include "./libft/includes/get_next_line.h"
 # include "./libft/ft_printf/ft_printf.h"
-
+# include "mlx.h"
 
 typedef struct	s_str
 {
@@ -44,12 +44,24 @@ typedef struct	s_str
 	int			ty_fig;
 	int			got_x;
 	int			got_y;
-
+	int			fd;
 }				t_str;
 
-int				fd;
+typedef struct	s_vis
+{
+	void		*mlx_ptr;
+	void		*win_ptr;
+	int			width;
+	int			height;
+}				t_vis;
 
 
+void			data_for_vis(t_str *gen, t_vis *vis);
+void			main_part(t_str *gen, t_vis *vis);
+void			put_pix(t_vis *vis, int color, int x, int y);
+int exit_func(int key);
+void	quit(t_str *gen, t_vis *vis);
+void	if_the_best(t_str *gen);
 
 
 void			initialize_struct(t_str *gen);

@@ -40,7 +40,7 @@ void		initialize_struct(t_str *gen)
 	gen->start_mey = 0;
 	gen->start_enx = 0;
 	gen->start_eny = 0;
-	fd = 0;
+	gen->fd = 0;
 }
 
 void		find_players(t_str *gen)
@@ -50,7 +50,7 @@ void		find_players(t_str *gen)
 
 	line = NULL;
 	i = 0;
-	get_next_line(fd, &line);
+	get_next_line(gen->fd, &line);
 	while (line[i])
 	{
 		if (line[i] == 'p')
@@ -73,12 +73,13 @@ void		find_map_size(t_str *gen)
 	char	**str;
 
 	line = NULL;
-	get_next_line(fd, &line);
+	get_next_line(gen->fd, &line);
 		str = ft_strsplit(line, ' ');
 		gen->row = ft_atoi(str[1]);
 		gen->col = ft_atoi(str[2]);
 		clear_split(str);
 	ft_strdel(&line);
+	//parse_map(gen);
 }
 
 void	clear_split(char **str)
@@ -91,26 +92,71 @@ void	clear_split(char **str)
 	free(str);
 }
 
+int		exit_func(int key)
+{
+	if (key == 53)
+		exit(0);
+	return (0);
+}
+
+void	za_loop(t_str *gen)
+{
+	parse_map(gen);
+	find_fig(gen);
+	rape_map(gen);
+}
+
+int		ft_loop(t_vis *vis, t_str *gen)
+{
+	main_part(gen, vis);
+	za_loop(gen);
+	mlx_do_sync(vis->mlx_ptr);
+	return (0);
+}
+
+void	quit(t_str *gen, t_vis *vis)
+{
+	if (gen->fig)
+		clear_split(gen->fig);
+	if (gen->map)
+		clear_split(gen->map);
+	if (vis->mlx_ptr)
+		free(vis->mlx_ptr);
+	if (vis->win_ptr)
+		mlx_destroy_window(vis->mlx_ptr, vis->win_ptr);
+	exit(0);
+}
+
 int			main(void)
 {
 	char	*line;
 	t_str	*gen;
+	t_vis	*vis;
 
+	vis = (t_vis *)malloc(sizeof(t_str));
 	gen = (t_str *)malloc(sizeof(t_str));
 	line = NULL;
 	initialize_struct(gen);
 	find_players(gen);
 	find_map_size(gen);
-	while (get_next_line(fd, &line) > 0)
-	{
-		if (ft_strncmp(line, "Plateau", 7))
-		{
-			parse_map(gen);
+	parse_map(gen);
+	data_for_vis(gen, vis);
+	//while (get_next_line(gen->fd, &line) > 0)
+	//{
+		//if (ft_strncmp(line, "Plateau", 7))
+		//{
+
+			//data_for_vis(gen, vis);
 			find_fig(gen);
 			rape_map(gen);
-		}
-		else
-			ft_strdel(&line);
-	}
+			/*mlx_do_sync(vis->mlx_ptr);
+			mlx_hook(vis->win_ptr, 2, 2, exit_func, vis);
+			//mlx_loop_hook(vis->mlx_ptr, ft_loop, vis);
+			mlx_loop(vis->mlx_ptr);
+			quit(gen, vis);*/
+		//}
+		//else
+		//	ft_strdel(&line);
+	//}
 
 }

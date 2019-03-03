@@ -159,7 +159,7 @@ int			work_horizon(t_str *gen, int fig_row, int fig_col)
 			{
 
 				if (i + fig_row == gen->start_mey &&
-					gen->map[i + fig_row][j + fig_col] != gen->me)
+ 					gen->map[i + fig_row][j + fig_col] != gen->me)
 					count++;
 			}
 			j++;
