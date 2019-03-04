@@ -53,3 +53,13 @@ void	put_pix(t_vis *vis, int color, int x, int y)
 		i++;
 	}
 }
+
+void			data_for_vis(t_str *gen, t_vis *vis)
+{
+	vis->mlx_ptr = mlx_init();
+	vis->height = gen->row * 25 + 0;
+	vis->width = gen->col * 25 + 0;
+	vis->win_ptr = mlx_new_window(vis->mlx_ptr, vis->width,
+		vis->height, "Visual by Pablo Eskobar, sasit'");
+	main_part(gen, vis);
+}

@@ -17,7 +17,7 @@ CC = @gcc
 FILLER_H = -I filler.h
 VISUAL = -lmlx -lm -framework OpenGL -framework AppKit
 
-SRC = main.c parse.c rape_map.c algorithm.c visual.c
+SRC = main.c parse.c rape_map.c algorithm.c visual.c help_algo.c
 
 OBJ = $(SRC:.c=.o)
 

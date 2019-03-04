@@ -33,14 +33,6 @@ void		ft_tabdel(char ***tab, int count)
 	*tab = NULL;
 }
 
-int		ft_abs(int nb)
-{
-	if (nb < 0)
-		return (-nb);
-	else
-		return (nb);
-}
-
 void		parse_map(t_str *gen)
 {
 	int		i;
@@ -61,7 +53,6 @@ void		parse_map(t_str *gen)
 		gen->map[j++] = ft_strsub(line, 4, ft_strlen(line));
 		free(str);
 		i++;
-		//ft_strdel(&line);
 	}
 	gen->map[j] = NULL;
 	start_cord(gen);
@@ -93,7 +84,7 @@ void		get_cord_fig(t_str *gen)
 	{
 		j = -1;
 		while (++j < gen->x_fig)
-				if (gen->fig[i][j] == '*')
+			if (gen->fig[i][j] == '*')
 			{
 				if (j < gen->start_x_fig)
 					gen->start_x_fig = j;
@@ -134,14 +125,3 @@ void		parse_fig(t_str *gen)
 	get_cord_fig(gen);
 	gen->fig[j] = NULL;
 }
-
-void			data_for_vis(t_str *gen, t_vis *vis)
-{
-	vis->mlx_ptr = mlx_init();
-	vis->height = gen->row * 25 + 0;
-	vis->width = gen->col * 25 + 0;
-	vis->win_ptr = mlx_new_window(vis->mlx_ptr, vis->width,
-		vis->height, "Visual by Pablo Eskobar, sasit'");
-	main_part(gen, vis);
-}
-

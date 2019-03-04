@@ -6,7 +6,7 @@
 /*   By: ppolozhe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/20 17:56:00 by ppolozhe          #+#    #+#             */
-/*   Updated: 2019/02/20 17:56:01 by ppolozhe         ###   ########.fr       */
+/*   Updated: 2019/03/04 14:48:38 by ppolozhe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,12 @@ void		initialize_struct(t_str *gen)
 	gen->y = 0;
 	gen->x_fig = 0;
 	gen->y_fig = 0;
-
 	gen->got_x = 0;
 	gen->got_y = 0;
-
 	gen->start_x_fig = 0;
 	gen->start_y_fig = 0;
 	gen->end_x_fig = 0;
 	gen->end_y_fig = 0;
-
 	gen->tx_fig = 0;
 	gen->ty_fig = 0;
 	gen->fig = NULL;
@@ -79,7 +76,6 @@ void		find_map_size(t_str *gen)
 		gen->col = ft_atoi(str[2]);
 		clear_split(str);
 	ft_strdel(&line);
-	//parse_map(gen);
 }
 
 void	clear_split(char **str)
@@ -139,13 +135,11 @@ int			main(void)
 	initialize_struct(gen);
 	find_players(gen);
 	find_map_size(gen);
-	parse_map(gen);
-	data_for_vis(gen, vis);
-	//while (get_next_line(gen->fd, &line) > 0)
-	//{
-		//if (ft_strncmp(line, "Plateau", 7))
-		//{
-
+	while (get_next_line(gen->fd, &line) > 0)
+	{
+		if (ft_strncmp(line, "Plateau", 7))
+		{
+			parse_map(gen);
 			//data_for_vis(gen, vis);
 			find_fig(gen);
 			rape_map(gen);
@@ -154,9 +148,8 @@ int			main(void)
 			//mlx_loop_hook(vis->mlx_ptr, ft_loop, vis);
 			mlx_loop(vis->mlx_ptr);
 			quit(gen, vis);*/
-		//}
-		//else
-		//	ft_strdel(&line);
-	//}
-
+		}
+		else
+		ft_strdel(&line);
+	}
 }

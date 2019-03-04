@@ -12,7 +12,7 @@
 
 #include "filler.h"
 
-void		get_quarter(t_str *gen)
+void	get_quarter(t_str *gen)
 {
 	int i;
 	int j;
@@ -27,13 +27,13 @@ void		get_quarter(t_str *gen)
 			{
 				if (i <= gen->row / 2 && j <= gen->col / 2)
 					gen->quarter = 1;
-				else if (i <= gen->row /2 && j >= gen->col / 2)
+				else if (i <= gen->row / 2 && j >= gen->col / 2)
 					gen->quarter = 2;
 				else if (i >= gen->row / 2 && j <= gen->col / 2)
 					gen->quarter = 3;
 				else
 					gen->quarter = 4;
-				break;
+				break ;
 			}
 			j++;
 		}
@@ -68,22 +68,18 @@ void	start_cord(t_str *gen)
 	}
 }
 
-void		rape_map(t_str *gen)
+void	rape_map(t_str *gen)
 {
-	int i;
-
-	i = 0;
 	if (gen->quarter == 0)
 		get_quarter(gen);
-
 	if (gen->row < 50 && gen->row > 20)
+	{
+		if (solve_3(gen))
 		{
-			if (solve_3(gen))
-			{
-				result(gen);
-				return ;
-			}
+			result(gen);
+			return ;
 		}
+	}
 	if (gen->row > 50 || gen->row < 20)
 	{
 		if (solve_1(gen))
@@ -97,8 +93,4 @@ void		rape_map(t_str *gen)
 		result(gen);
 		return ;
 	}
-
-
-
-
 }
