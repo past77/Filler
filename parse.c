@@ -69,6 +69,7 @@ void		find_fig(t_str *gen)
 	gen->y_fig = ft_atoi(str[1]);
 	gen->x_fig = ft_atoi(str[2]);
 	clear_split(str);
+	free(line);
 	parse_fig(gen);
 }
 

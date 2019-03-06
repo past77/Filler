@@ -17,7 +17,7 @@ CC = @gcc
 FILLER_H = -I filler.h
 VISUAL = -lmlx -lm -framework OpenGL -framework AppKit
 
-SRC = main.c parse.c rape_map.c algorithm.c visual.c help_algo.c
+SRC = main.c parse.c rape_map.c algorithm.c help_algo.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -29,7 +29,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C $(LIBFT)
-	$(CC) $(CFLAGS) $(VISUAL) $(SRC) $(FILLER_H) $(LIBA) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC) $(FILLER_H) $(LIBA) -o $(NAME)
 	@echo "\x1B[35m\0binary file |-- ppolozhe.filler --| is created\x1B[0m\0"
 
 clean:

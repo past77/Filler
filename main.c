@@ -87,7 +87,7 @@ void	clear_split(char **str)
 		free(str[i++]);
 	free(str);
 }
-
+/*
 int		exit_func(int key)
 {
 	if (key == 53)
@@ -122,7 +122,7 @@ void	quit(t_str *gen, t_vis *vis)
 		mlx_destroy_window(vis->mlx_ptr, vis->win_ptr);
 	exit(0);
 }
-
+*/
 int			main(void)
 {
 	char	*line;
