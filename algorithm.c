@@ -18,11 +18,11 @@ int			solve_1(t_str *gen)
 	int		fig_col;
 	int		count;
 
-	fig_row = -gen->row;
+	fig_row = -gen->ty_fig;
 	count = -1;
 	while (gen->row > fig_row)
 	{
-		fig_col = -gen->col;
+		fig_col = -gen->ty_fig;
 		while (gen->col > fig_col)
 		{
 			if (put_fig(fig_row, fig_col, gen))
@@ -86,7 +86,9 @@ int			solve_sup(t_str *gen)
 				count++;
 				gen->got_y = gen->cor_y;
 				gen->got_x = gen->cor_x;
-				if (gen->quarter == 3 && gen->quarter == 1)
+				if (gen->quarter == 1 && gen->quarter == 3)
+					return (1);
+				if (gen->quarter == 1 || gen->quarter == 3)
 					return (1);
 			}
 			gen->cor_x++;
@@ -102,11 +104,11 @@ int			solve_2(t_str *gen)
 {
 	int		count;
 
-	gen->cor_y = -gen->ty_fig;
+	gen->cor_y = -gen->y_fig;
 	count = -1;
 	while (gen->row > gen->cor_y)
 	{
-		gen->cor_x = -gen->tx_fig;
+		gen->cor_x = -gen->x_fig;
 		while (gen->col > gen->cor_x)
 		{
 			if (put_fig(gen->cor_y, gen->cor_x, gen))

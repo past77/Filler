@@ -76,9 +76,10 @@ void	rape_map(t_str *gen)
 if (gen->row < 50 && gen->row > 20)
 	{
 //									for half size
+
 		if (solve_3(gen))
 		{
-			result(gen);
+			result (gen);
 			return ;
 		}
 		if (solve_sup(gen))
@@ -87,7 +88,7 @@ if (gen->row < 50 && gen->row > 20)
 			return ;
 		}
 	}
-	if (gen->row > 50)
+	else
 	{
 //									for big size and a little
 		if (solve_3(gen))
