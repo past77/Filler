@@ -68,29 +68,40 @@ void	start_cord(t_str *gen)
 	}
 }
 
+int		help_rape(t_str *gen)
+{
+	int count;
+
+	count = -1;
+	if (solve_3(gen))
+	{
+		result(gen);
+		return (0);
+	}
+	if (solve_1(gen))
+	{
+		result(gen);
+		return (0);
+	}
+	if (solve_sup(gen, count))
+	{
+		result(gen);
+		return (0);
+	}
+	return (0);
+}
 
 void	rape_map(t_str *gen)
 {
 	if (gen->quarter == 0)
 		get_quarter(gen);
-if (gen->row < 50 && gen->row > 20)
+	if (gen->row < 50)
 	{
-//									for half size
-
-		if (solve_3(gen))
-		{
-			result (gen);
+		if (help_rape(gen) == 0)
 			return ;
-		}
-		if (solve_sup(gen))
-		{
-			result (gen);
-			return ;
-		}
 	}
 	else
 	{
-//									for big size and a little
 		if (solve_3(gen))
 		{
 			result(gen);

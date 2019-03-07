@@ -70,36 +70,6 @@ int			solve_3(t_str *gen)
 	return (count);
 }
 
-int			solve_sup(t_str *gen)
-{
-	int		count;
-
-	gen->cor_y = -gen->y_fig;
-	count = -1;
-	while (gen->row > gen->cor_y)
-	{
-		gen->cor_x = -gen->x_fig;
-		while (gen->col > gen->cor_x)
-		{
-			if (put_fig(gen->cor_y, gen->cor_x, gen))
-			{
-				count++;
-				gen->got_y = gen->cor_y;
-				gen->got_x = gen->cor_x;
-				if (gen->quarter == 1 && gen->quarter == 3)
-					return (1);
-				if (gen->quarter == 1 || gen->quarter == 3)
-					return (1);
-			}
-			gen->cor_x++;
-		}
-		gen->cor_y++;
-	}
-	if (initthisshit(gen))
-		return (0);
-	return (count);
-}
-
 int			solve_2(t_str *gen)
 {
 	int		count;

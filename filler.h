@@ -15,12 +15,12 @@
 # include "./libft/includes/libft.h"
 # include "./libft/includes/get_next_line.h"
 # include "./libft/ft_printf/ft_printf.h"
-# include "minilibx_macos/mlx.h"
 
 typedef struct	s_str
 {
 	char		me;
 	char		opponent;
+	char		ex;
 	int			row;
 	int			col;
 	int			x;
@@ -50,18 +50,6 @@ typedef struct	s_str
 	int			fd;
 }				t_str;
 
-typedef struct	s_vis
-{
-	void		*mlx_ptr;
-	void		*win_ptr;
-	int			width;
-	int			height;
-}				t_vis;
-
-void			data_for_vis(t_str *gen, t_vis *vis);
-void			put_pix(t_vis *vis, int color, int x, int y);
-int				exit_func(int key);
-
 int				initthisshit(t_str *gen);
 void			initialize_struct(t_str *gen);
 void			find_players(t_str *str);
@@ -77,14 +65,12 @@ int				solve(t_str *gen);
 int				put_figure(int row, int col, t_str *gen);
 void			result(t_str *gen);
 void			ft_tabdel(char ***tab, int count);
-int				ft_abs(int nb);
 int				solve_3(t_str *gen);
 int				work_vertical(t_str *gen, int fig_row, int fig_col);
 int				put_fig(int row, int col, t_str *gen);
 int				solve_1(t_str *gen);
 int				solve_2(t_str *gen);
-int				solve_sup(t_str *gen);
+int				solve_sup(t_str *gen, int count);
 int				work_horizon(t_str *gen, int fig_row, int fig_col);
-void			clear_split(char **str);
 
 #endif

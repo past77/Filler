@@ -12,27 +12,6 @@
 
 #include "filler.h"
 
-void		ft_tabdel(char ***tab, int count)
-{
-	int		i;
-
-	i = 0;
-	if (count < 0)
-		while ((*tab)[i])
-		{
-			free((*tab)[i]);
-			i++;
-		}
-	else
-		while (i < count)
-		{
-			free((*tab)[i]);
-			i++;
-		}
-	free(*tab);
-	*tab = NULL;
-}
-
 void		parse_map(t_str *gen)
 {
 	int		i;
